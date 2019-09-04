@@ -1,20 +1,20 @@
 package complex
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
-// Complex64JSON struct.
-type Complex64JSON struct {
+// Complex64 struct.
+type Complex64 struct {
 	Value complex64
 	Valid bool
-	Set bool
+	Set   bool
 }
 
-// UnmarshalJSON unmarshaler implementation for Complex64JSON (complex64).
-func (j *Complex64JSON) UnmarshalJSON(data []byte) error {
+// UnmarshalJSON unmarshaler implementation for Complex64.
+func (j *Complex64) UnmarshalJSON(data []byte) error {
 	// If this method is call, the value is set.
 	// Value could be set to either null or some non-null value.
 	j.Set = true
@@ -35,11 +35,11 @@ func (j *Complex64JSON) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// MarshalJSON marshaler implementation for Complex64JSON (complex64).
-func (j Complex64JSON) MarshalJSON() ([]byte, error) {
+// MarshalJSON marshaler implementation for Complex64.
+func (j Complex64) MarshalJSON() ([]byte, error) {
 	buffer := bytes.NewBufferString("")
 	if j.Valid {
-		buffer.WriteString(fmt.Sprintf("f", j.Value))
+		buffer.WriteString(fmt.Sprintf("%f", j.Value))
 	} else {
 		buffer.WriteString("null")
 	}

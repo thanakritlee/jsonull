@@ -1,20 +1,20 @@
 package float
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
-// Float64JSON struct.
-type Float64JSON struct {
+// Float64 struct.
+type Float64 struct {
 	Value float64
 	Valid bool
-	Set bool
+	Set   bool
 }
 
-// UnmarshalJSON unmarshaler implementation for Float64JSON (float64).
-func (j *Float64JSON) UnmarshalJSON(data []byte) error {
+// UnmarshalJSON unmarshaler implementation for Float64.
+func (j *Float64) UnmarshalJSON(data []byte) error {
 	// If this method is call, the value is set.
 	// Value could be set to either null or some non-null value.
 	j.Set = true
@@ -35,8 +35,8 @@ func (j *Float64JSON) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// MarshalJSON marshaler implementation for Float64JSON (float64).
-func (j Float64JSON) MarshalJSON() ([]byte, error) {
+// MarshalJSON marshaler implementation for Float64.
+func (j Float64) MarshalJSON() ([]byte, error) {
 	buffer := bytes.NewBufferString("")
 	if j.Valid {
 		buffer.WriteString(fmt.Sprintf("%f", j.Value))

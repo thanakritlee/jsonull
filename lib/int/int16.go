@@ -1,20 +1,20 @@
 package int
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"strconv"
 )
 
-// Int16JSON struct.
-type Int16JSON struct {
+// Int16 struct.
+type Int16 struct {
 	Value int16
 	Valid bool
-	Set bool
+	Set   bool
 }
 
-// UnmarshalJSON unmarshaler implementation for Int16JSON (int16).
-func (j *Int16JSON) UnmarshalJSON(data []byte) error {
+// UnmarshalJSON unmarshaler implementation for Int16.
+func (j *Int16) UnmarshalJSON(data []byte) error {
 	// If this method is call, the value is set.
 	// Value could be set to either null or some non-null value.
 	j.Set = true
@@ -35,8 +35,8 @@ func (j *Int16JSON) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// MarshalJSON marshaler implementation for Int16JSON (int16).
-func (j Int16JSON) MarshalJSON() ([]byte, error) {
+// MarshalJSON marshaler implementation for Int16.
+func (j Int16) MarshalJSON() ([]byte, error) {
 	buffer := bytes.NewBufferString("")
 	if j.Valid {
 		buffer.WriteString(strconv.FormatInt(int64(j.Value), 10))

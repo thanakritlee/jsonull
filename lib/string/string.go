@@ -1,19 +1,19 @@
 package string
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 )
 
-// StringJSON struct.
-type StringJSON struct {
+// String struct.
+type String struct {
 	Value string
 	Valid bool
-	Set bool
+	Set   bool
 }
 
-// UnmarshalJSON unmarshaler implementation for StringJSON (string).
-func (j *StringJSON) UnmarshalJSON(data []byte) error {
+// UnmarshalJSON unmarshaler implementation for String.
+func (j *String) UnmarshalJSON(data []byte) error {
 	// If this method is call, the value is set.
 	// Value could be set to either null or some non-null value.
 	j.Set = true
@@ -34,11 +34,11 @@ func (j *StringJSON) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// MarshalJSON marshaler implementation for StringJSON (string).
-func (j StringJSON) MarshalJSON() ([]byte, error) {
+// MarshalJSON marshaler implementation for String.
+func (j String) MarshalJSON() ([]byte, error) {
 	buffer := bytes.NewBufferString("")
 	if j.Valid {
-		buffer.WriteString(`"`+j.Value+`"`)
+		buffer.WriteString(`"` + j.Value + `"`)
 	} else {
 		buffer.WriteString("null")
 	}

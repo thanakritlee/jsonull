@@ -1,20 +1,20 @@
 package bool
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"strconv"
 )
 
-// BoolJSON struct.
-type BoolJSON struct {
+// Bool struct.
+type Bool struct {
 	Value bool
 	Valid bool
-	Set bool
+	Set   bool
 }
 
-// UnmarshalJSON unmarshaler implementation for BoolJSON (bool).
-func (j *BoolJSON) UnmarshalJSON(data []byte) error {
+// UnmarshalJSON unmarshaler implementation for Bool.
+func (j *Bool) UnmarshalJSON(data []byte) error {
 	// If this method is call, the value is set.
 	// Value could be set to either null or some non-null value.
 	j.Set = true
@@ -35,11 +35,11 @@ func (j *BoolJSON) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// MarshalJSON marshaler implementation for BoolJSON (bool).
-func (j BoolJSON) MarshalJSON() ([]byte, error) {
+// MarshalJSON marshaler implementation for Bool.
+func (j Bool) MarshalJSON() ([]byte, error) {
 	buffer := bytes.NewBufferString("")
 	if j.Valid {
-		buffer.WriteString(strconv.FormatBool(j.Value)
+		buffer.WriteString(strconv.FormatBool(j.Value))
 	} else {
 		buffer.WriteString("null")
 	}
