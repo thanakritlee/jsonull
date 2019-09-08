@@ -35,11 +35,11 @@ func (j *Uint64) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// MarshalJSON marshaler implementation for Float64.
+// MarshalJSON marshaler implementation for Uint64.
 func (j Uint64) MarshalJSON() ([]byte, error) {
 	buffer := bytes.NewBufferString("")
 	if j.Valid {
-		buffer.WriteString(fmt.Sprintf("%f", j.Value))
+		buffer.WriteString(fmt.Sprintf("%d", j.Value))
 	} else {
 		buffer.WriteString("null")
 	}

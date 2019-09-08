@@ -35,11 +35,11 @@ func (j *Uint8) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// MarshalJSON marshaler implementation for Float8.
+// MarshalJSON marshaler implementation for Uint8.
 func (j Uint8) MarshalJSON() ([]byte, error) {
 	buffer := bytes.NewBufferString("")
 	if j.Valid {
-		buffer.WriteString(fmt.Sprintf("%f", j.Value))
+		buffer.WriteString(fmt.Sprintf("%d", j.Value))
 	} else {
 		buffer.WriteString("null")
 	}
