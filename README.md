@@ -1,5 +1,9 @@
 # JSONull
 
+## Credits
+- Thanakrit Lee
+- Supachai Fook Keemthong
+
 This library allow JSON Unmarshalling and Marshalling `null` value.
 
 ## Why this library was created
